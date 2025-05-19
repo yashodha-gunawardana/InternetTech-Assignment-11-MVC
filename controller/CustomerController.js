@@ -170,6 +170,19 @@ class CustomerController {
         });
     }
 
+    resetForm() {
+        this.customerIdInput.value = '';
+        this.customerNameInput.value = '';
+        this.addressInput.value = '';
+        this.contactNumberInput.value = '';
+        this.selectedCustomer = null;
+
+        // Remove highlight from all rows
+        document.querySelectorAll('#customers-page table tbody tr').forEach(row => {
+            row.classList.remove('table-primary');
+        });
+    }
+
 
 
 }
