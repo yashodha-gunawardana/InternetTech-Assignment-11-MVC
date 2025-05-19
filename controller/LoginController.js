@@ -6,6 +6,9 @@ class LoginController {
         // Cache the login form and logout button from the DOM
         this.loginForm = document.getElementById('login-form');
         this.logoutBtn = document.getElementById('logout-btn');
+
+        // Initialize event listeners for login and logout actions
+        this.initEventListeners();
     }
 
 }
