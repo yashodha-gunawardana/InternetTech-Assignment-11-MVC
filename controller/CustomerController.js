@@ -38,4 +38,9 @@ class CustomerController {
         this.viewAllBtn?.addEventListener('click', () => this.handleViewAll());
     }
 
+    handleGoBack(e) {
+        e.preventDefault();
+        showPage('home-page'); // Redirect to home page
+    }
+
 }
