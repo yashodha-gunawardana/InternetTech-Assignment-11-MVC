@@ -108,5 +108,11 @@ class CustomerController {
         }
     }
 
+    handleResetForm(e) {
+        e.preventDefault();
+        this.resetForm();
+    }
+
+
 
 }
