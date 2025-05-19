@@ -18,6 +18,7 @@ window.showAlert = function(message, type) {
     }, 3000);
 };
 
+// Setup Page Routing & Authentication
 document.addEventListener('DOMContentLoaded', function() {
     // Global page router
     window.showPage = function(pageId) {
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 });
 
+// Update UI Based on Login Status
 window.updateAuthUI = function() {
     const loginBtn = document.getElementById('login-btn');
     const logoutBtn = document.getElementById('logout-btn');
@@ -74,3 +76,11 @@ window.updateAuthUI = function() {
         if (navLinks) navLinks.forEach(link => link.style.display = 'block');
     }
 };
+
+// Logout button
+document.getElementById('logout-btn')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    db.logout();
+    window.updateAuthUI();
+    showPage('login-page');
+});
