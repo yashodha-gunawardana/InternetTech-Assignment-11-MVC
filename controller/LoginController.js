@@ -44,6 +44,10 @@ class LoginController {
             // Show success alert with user name
             showAlert(`✅ Login successfully..! Welcome ${displayName}! 🎉`, 'success');
 
+            // Update navigation and show home page
+            window.updateAuthUI();
+            window.showPage('home-page');
+
         } else {
 
         }
