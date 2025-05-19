@@ -36,5 +36,14 @@ class LoginController {
             showAlert('⚠️ Please enter both username and password', 'warning');
             return;
         }
+
+        // Authenticate using db method
+        if (db.authenticate(username, password)) {
+            const displayName = db.currentUser.name || db.currentUser.username;
+
+
+        } else {
+
+        }
     }
 }
