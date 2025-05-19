@@ -23,4 +23,8 @@ class LoginController {
             this.logoutBtn.addEventListener('click', () => this.handleLogout());
         }
     }
+
+    handleLogin(e) {
+        e.preventDefault(); // Prevent form from reloading the page
+    }
 }
