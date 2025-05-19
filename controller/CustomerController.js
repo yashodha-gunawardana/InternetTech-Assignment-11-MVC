@@ -113,6 +113,13 @@ class CustomerController {
         this.resetForm();
     }
 
+    handleTableClick(e) {
+        const row = e.target.closest('tr');
+        if (row) {
+            this.selectCustomer(row.dataset.id); // Load selected row data to form
+        }
+    }
+
 
 
 }
