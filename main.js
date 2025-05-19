@@ -58,3 +58,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 });
+
+window.updateAuthUI = function() {
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (db.currentUser) {
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (logoutBtn) logoutBtn.style.display = 'block';
+        if (navLinks) navLinks.forEach(link => link.style.display = 'block');
+    } else {
+        if (loginBtn) loginBtn.style.display = 'block';
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        if (navLinks) navLinks.forEach(link => link.style.display = 'block');
+    }
+};
