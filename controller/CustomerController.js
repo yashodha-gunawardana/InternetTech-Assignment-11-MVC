@@ -120,6 +120,17 @@ class CustomerController {
         }
     }
 
+    handleSearch() {
+        const query = this.searchInput.value.trim();
+        const results = this.model.search(query);
+        this.renderCustomers(results); // Show filtered results
+    }
+
+    handleViewAll() {
+        this.searchInput.value = '';
+        this.loadCustomers(); // Reload all customers
+    }
+
 
 
 }
