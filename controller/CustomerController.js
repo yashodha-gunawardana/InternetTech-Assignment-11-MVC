@@ -43,4 +43,23 @@ class CustomerController {
         showPage('home-page'); // Redirect to home page
     }
 
+    handleAddCustomer(e) {
+        e.preventDefault();
+        const customerData = {
+            name: this.customerNameInput.value,
+            address: this.addressInput.value,
+            contactNumber: this.contactNumberInput.value
+        };
+
+        try {
+            const manualId = this.customerIdInput.value.trim(); // Optional manual ID
+            this.model.create(customerData, manualId || undefined); // Insert customer
+            this.loadCustomers(); // Refresh table
+            this.resetForm(); // Clear form
+            this.showSuccessMessage('✅ Customer added successfully!');
+        } catch (error) {
+            this.showErrorMessage(error.message);
+        }
+    }
+
 }
