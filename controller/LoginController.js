@@ -11,4 +11,16 @@ class LoginController {
         this.initEventListeners();
     }
 
+    initEventListeners() {
+
+        // Attach submit event to login form
+        if (this.loginForm) {
+            this.loginForm.addEventListener('submit', (e) => this.handleLogin(e));
+        }
+
+        // Attach click event to logout button
+        if (this.logoutBtn) {
+            this.logoutBtn.addEventListener('click', () => this.handleLogout());
+        }
+    }
 }
