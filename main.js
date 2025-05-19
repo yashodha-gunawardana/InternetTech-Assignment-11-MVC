@@ -84,3 +84,29 @@ document.getElementById('logout-btn')?.addEventListener('click', function(e) {
     window.updateAuthUI();
     showPage('login-page');
 });
+
+// Navigation Link Event Listeners
+document.getElementById('home-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showPage('home-page');
+});
+
+document.getElementById('home-nav-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showPage('home-page');
+});
+
+document.getElementById('item-nav-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showPage('items-page');
+});
+
+document.getElementById('customers-nav-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showPage('customers-page');
+});
+
+document.getElementById('orders-nav-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    showPage('orders-page');
+});
