@@ -41,9 +41,13 @@ class LoginController {
         if (db.authenticate(username, password)) {
             const displayName = db.currentUser.name || db.currentUser.username;
 
+            // Show success alert with user name
+            showAlert(`✅ Login successfully..! Welcome ${displayName}! 🎉`, 'success');
 
         } else {
 
         }
     }
 }
+
+export default LoginController;
