@@ -150,6 +150,26 @@ class CustomerController {
         }
     }
 
+    loadCustomers() {
+        const customers = this.model.findAll();
+        this.renderCustomers(customers);
+    }
+
+    renderCustomers(customers) {
+        this.table.innerHTML = '';
+        customers.forEach(customer => {
+            const row = document.createElement('tr');
+            row.dataset.id = customer.id;
+            row.innerHTML = `
+                <td>${customer.id}</td>
+                <td>${customer.name}</td>
+                <td>${customer.address}</td>
+                <td>${customer.contactNumber}</td>
+            `;
+            this.table.appendChild(row);
+        });
+    }
+
 
 
 }
