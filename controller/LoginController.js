@@ -49,7 +49,8 @@ class LoginController {
             window.showPage('home-page');
 
         } else {
-
+            // Show error message for invalid credentials
+            showAlert('❌ Invalid username or password', 'error');
         }
     }
 }
