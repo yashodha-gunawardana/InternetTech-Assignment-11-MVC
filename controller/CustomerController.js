@@ -183,6 +183,16 @@ class CustomerController {
         });
     }
 
+    showSuccessMessage(message) {
+        alert(message); // Can be replaced with a better UI notification
+    }
 
-
+    showErrorMessage(message) {
+        alert(message); // Can be replaced with a better UI notification
+    }
 }
+
+export default CustomerController;
+
+
+
