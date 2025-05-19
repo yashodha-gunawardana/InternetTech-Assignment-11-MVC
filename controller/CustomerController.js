@@ -131,6 +131,25 @@ class CustomerController {
         this.loadCustomers(); // Reload all customers
     }
 
+    selectCustomer(customerId) {
+        const customer = this.model.findById(customerId);
+        if (customer) {
+            this.selectedCustomer = customer;
+            this.customerIdInput.value = customer.id;
+            this.customerNameInput.value = customer.name;
+            this.addressInput.value = customer.address;
+            this.contactNumberInput.value = customer.contactNumber;
+
+            // Highlight selected row
+            document.querySelectorAll('#customers-page table tbody tr').forEach(row => {
+                row.classList.remove('table-primary');
+                if (row.dataset.id === customerId) {
+                    row.classList.add('table-primary');
+                }
+            });
+        }
+    }
+
 
 
 }
