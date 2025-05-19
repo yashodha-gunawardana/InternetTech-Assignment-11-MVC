@@ -30,5 +30,11 @@ class LoginController {
         // Get input values from form fields
         const username = this.loginForm.querySelector('input[type="text"]').value.trim();
         const password = this.loginForm.querySelector('input[type="password"]').value.trim();
+
+        // Validate input fields
+        if (!username || !password) {
+            showAlert('⚠️ Please enter both username and password', 'warning');
+            return;
+        }
     }
 }
