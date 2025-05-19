@@ -39,6 +39,48 @@ const db = {
         return this.customers;
     },
 
+    addItem(item) {
+        item.id = this.generateId('I'); // Auto-generate item ID
+        item.quantity = item.quantity || 0;
+        this.items.push(item);
+        return item;
+    },
+
+    getItem(id) {
+        return this.items.find(item => item.id === id) || null;
+    },
+
+    getAllItems() {
+        return this.items.map(item => ({
+            ...item,
+            quantity: item.quantity || 0
+        }));
+    },
+
+    updateItem(item) {
+        if (!item || !item.id) {
+            throw new Error('Invalid item object or missing ID');
+        }
+
+        const index = this.items.findIndex(i => i.id === item.id);
+        if (index === -1) {
+            throw new Error(`Item with ID ${item.id} not found`);
+        }
+
+        const updatedItem = {
+            ...this.items[index],
+            ...item,
+            quantity: parseInt(item.quantity) || 0,
+            price: parseFloat(item.price) || 0
+        };
+
+        if (updatedItem.quantity < 0) {
+            throw new Error('Item quantity cannot be negative');
+        }
+
+        this.items[index] = updatedItem;
+        return true;
+    },
 
 
 }
