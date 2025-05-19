@@ -26,5 +26,9 @@ class LoginController {
 
     handleLogin(e) {
         e.preventDefault(); // Prevent form from reloading the page
+
+        // Get input values from form fields
+        const username = this.loginForm.querySelector('input[type="text"]').value.trim();
+        const password = this.loginForm.querySelector('input[type="password"]').value.trim();
     }
 }
