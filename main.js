@@ -110,3 +110,12 @@ document.getElementById('orders-nav-link')?.addEventListener('click', function(e
     e.preventDefault();
     showPage('orders-page');
 });
+
+// Initial UI Setup on Load
+window.updateAuthUI();
+
+if (db.currentUser) {
+    showPage('home-page');
+} else {
+    showPage('login-page');
+}
