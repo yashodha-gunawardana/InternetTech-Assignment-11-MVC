@@ -53,6 +53,24 @@ class LoginController {
             showAlert('❌ Invalid username or password', 'error');
         }
     }
+
+    handleLogout() {
+        // Clear current user session from db
+        db.logout();
+
+        // Show logout alert
+        window.showAlert('✅ Logged out successfully!', 'success');
+
+        // Clear input fields in the login form
+        if (this.loginForm) {
+            this.loginForm.querySelector('input[type="text"]').value = '';
+            this.loginForm.querySelector('input[type="password"]').value = '';
+        }
+
+        // Show login page and reset UI state
+        window.updateAuthUI();
+        window.showPage('login-page');
+    }
 }
 
 export default LoginController;
