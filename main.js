@@ -17,3 +17,26 @@ window.showAlert = function(message, type) {
         alertDiv.remove();
     }, 3000);
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Global page router
+    window.showPage = function(pageId) {
+        const protectedPages = ['home-page', 'customers-page', 'items-page', 'orders-page'];
+
+        if (protectedPages.includes(pageId)) {
+            if (!db.currentUser) {
+                showPage('login-page');
+                window.showAlert('🔒 Please login first!', 'warning');
+                return;
+            }
+        }
+
+        // Hide all pages
+        document.querySelectorAll('.main-container, .main-content').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // Show the requested page
+        const pageToShow = document.getElementById(pageId);
+        if (pageToShow) {
+            pageToShow.style.display = 'block';
