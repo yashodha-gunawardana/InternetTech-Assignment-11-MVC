@@ -18,10 +18,11 @@ window.showAlert = function(message, type) {
     }, 3000);
 };
 
-// Setup Page Routing & Authentication
+// Initialize controllers when their pages are shown
 document.addEventListener('DOMContentLoaded', function() {
-    // Global page router
+    // Global function to show pages
     window.showPage = function(pageId) {
+        // Check authentication for protected pages
         const protectedPages = ['home-page', 'customers-page', 'items-page', 'orders-page'];
 
         if (protectedPages.includes(pageId)) {
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Hide all pages
+        // Hide all pages first
         document.querySelectorAll('.main-container, .main-content').forEach(el => {
             el.style.display = 'none';
         });
