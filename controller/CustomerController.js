@@ -89,31 +89,24 @@ class CustomerController {
         }
     }
 
-    handleUpdateCustomer(e) {
+    handleRemoveCustomer(e) {
         e.preventDefault();
         if (!this.selectedCustomer) {
-            this.showErrorMessage('❌ Please select a customer to update');
+            this.showErrorMessage('❌ Please select a customer to remove');
             return;
         }
 
-        const updatedData = {
-            name: this.customerNameInput.value,
-            address: this.addressInput.value,
-            contactNumber: this.contactNumberInput.value
-        };
-
-        try {
-            const updated = this.model.update(this.selectedCustomer.id, updatedData);
-            if (updated) {
+        if (confirm(`⚠️ Are you sure you want to delete ${this.selectedCustomer.name}?`)) {
+            const removed = this.model.delete(this.selectedCustomer.id);
+            if (removed) {
                 this.loadCustomers();
                 this.resetForm();
-                this.showSuccessMessage('✅ Customer updated successfully!');
+                this.showSuccessMessage('✅ Customer removed successfully!');
             } else {
                 this.showErrorMessage('❌ Customer not found');
             }
-        } catch (error) {
-            this.showErrorMessage(error.message);
         }
     }
+
 
 }
