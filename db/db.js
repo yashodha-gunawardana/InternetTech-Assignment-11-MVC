@@ -23,6 +23,23 @@ const db = {
         this.currentUser = null;
     },
 
+    addCustomer(customer) {
+        if (this.customers.some(c => c.id === customer.id)) {
+            throw new Error(`Customer with ID ${customer.id} already exists`);
+        }
+        this.customers.push(customer);
+        return customer;
+    },
+
+    getCustomer(id) {
+        return this.customers.find(c => c.id === id);
+    },
+
+    getAllCustomers() {
+        return this.customers;
+    },
+
+
 
 }
 
