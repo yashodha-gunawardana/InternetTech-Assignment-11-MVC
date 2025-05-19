@@ -40,3 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const pageToShow = document.getElementById(pageId);
         if (pageToShow) {
             pageToShow.style.display = 'block';
+
+            switch(pageId) {
+                case 'login-page':
+                    new LoginController();
+                    break;
+                case 'customers-page':
+                    new CustomerController();
+                    break;
+                case 'items-page':
+                    new ItemController();
+                    break;
+                case 'orders-page':
+                    new OrderController();
+                    break;
+            }
+        }
+    };
+});
