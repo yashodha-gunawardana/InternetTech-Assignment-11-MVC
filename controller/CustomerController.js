@@ -62,4 +62,58 @@ class CustomerController {
         }
     }
 
+    handleUpdateCustomer(e) {
+        e.preventDefault();
+        if (!this.selectedCustomer) {
+            this.showErrorMessage('❌ Please select a customer to update');
+            return;
+        }
+
+        const updatedData = {
+            name: this.customerNameInput.value,
+            address: this.addressInput.value,
+            contactNumber: this.contactNumberInput.value
+        };
+
+        try {
+            const updated = this.model.update(this.selectedCustomer.id, updatedData);
+            if (updated) {
+                this.loadCustomers();
+                this.resetForm();
+                this.showSuccessMessage('✅ Customer updated successfully!');
+            } else {
+                this.showErrorMessage('❌ Customer not found');
+            }
+        } catch (error) {
+            this.showErrorMessage(error.message);
+        }
+    }
+
+    handleUpdateCustomer(e) {
+        e.preventDefault();
+        if (!this.selectedCustomer) {
+            this.showErrorMessage('❌ Please select a customer to update');
+            return;
+        }
+
+        const updatedData = {
+            name: this.customerNameInput.value,
+            address: this.addressInput.value,
+            contactNumber: this.contactNumberInput.value
+        };
+
+        try {
+            const updated = this.model.update(this.selectedCustomer.id, updatedData);
+            if (updated) {
+                this.loadCustomers();
+                this.resetForm();
+                this.showSuccessMessage('✅ Customer updated successfully!');
+            } else {
+                this.showErrorMessage('❌ Customer not found');
+            }
+        } catch (error) {
+            this.showErrorMessage(error.message);
+        }
+    }
+
 }
