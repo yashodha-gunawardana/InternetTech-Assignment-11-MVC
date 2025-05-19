@@ -3,10 +3,10 @@ import CustomerModel from '../model/CustomerModel.js';
 
 class CustomerController {
     constructor() {
-        this.model = new CustomerModel(db); // Connect model to DB
+        this.model = new CustomerModel(db);
         this.initializeElements(); // Setup DOM references
         this.setupEventListeners(); // Hook event handlers
-        this.loadCustomers(); // Load all customer data on init
+        this.loadCustomers();
     }
 
     // Initialize all DOM elements used by the controller
@@ -26,4 +26,16 @@ class CustomerController {
 
         this.selectedCustomer = null; // Reset selected customer
     }
+
+    setupEventListeners() {
+        this.addBtn?.addEventListener('click', (e) => this.handleAddCustomer(e));
+        this.updateBtn?.addEventListener('click', (e) => this.handleUpdateCustomer(e));
+        this.removeBtn?.addEventListener('click', (e) => this.handleRemoveCustomer(e));
+        this.resetBtn?.addEventListener('click', (e) => this.handleResetForm(e));
+        this.goBackBtn?.addEventListener('click', (e) => this.handleGoBack(e));
+        this.table?.addEventListener('click', (e) => this.handleTableClick(e));
+        this.searchInput?.addEventListener('input', () => this.handleSearch());
+        this.viewAllBtn?.addEventListener('click', () => this.handleViewAll());
+    }
+
 }
