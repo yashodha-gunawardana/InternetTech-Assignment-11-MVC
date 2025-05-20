@@ -23,7 +23,12 @@ class OrderDetailsModel {
         if (this.unitPrice < 0) throw new Error('Unit price cannot be negative');
         if (this.total < 0) throw new Error('Total cannot be negative');
 
-
+        // Validate calculated total
+        const calculatedTotal = this.quantity * this.unitPrice;
+        if (Math.abs(calculatedTotal - this.total) > 0.01) {
+            throw new Error('Total calculation mismatch');
+        }
     }
-
 }
+
+export default OrderDetailsModel;
