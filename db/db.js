@@ -82,6 +82,29 @@ const db = {
         return true;
     },
 
+    addOrder(order) {
+        if (!(order instanceof OrderModel)) {
+            throw new Error('Invalid order object');
+        }
+
+        order.validate(); // Custom validation from OrderModel
+
+        if (this.orders.some(o => o.orderId === order.orderId)) {
+            throw new Error(`Order ${order.orderId} already exists`);
+        }
+
+        this.orders.push(order);
+        return order;
+    },
+
+    getOrder(id) {
+        return this.orders.find(o => o.orderId === id);
+    },
+
+    getAllOrders() {
+        return this.orders;
+    },
+
 
 }
 
