@@ -105,6 +105,26 @@ const db = {
         return this.orders;
     },
 
+    addOrderDetail(orderDetail) {
+        if (!(orderDetail instanceof OrderDetailsModel)) {
+            throw new Error('Invalid order detail object');
+        }
+
+        orderDetail.validate(); // Custom validation from OrderDetailsModel
+
+        if (!this.orders.some(o => o.orderId === orderDetail.orderId)) {
+            throw new Error(`Order ${orderDetail.orderId} does not exist`);
+        }
+
+        this.orderDetails.push(orderDetail);
+        return orderDetail;
+    },
+
+    getOrderDetails(orderId) {
+        return this.orderDetails.filter(od => od.orderId === orderId);
+    },
+
+
 
 }
 
