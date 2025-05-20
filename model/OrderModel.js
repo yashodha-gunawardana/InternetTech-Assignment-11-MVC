@@ -32,7 +32,17 @@ class OrderModel {
             throw new Error('Discount cannot exceed subtotal');
         }
 
+        // Validate calculated totals
+        const calculatedTotal = this.subTotal * (1 - (this.discount / 100));
+        if (Math.abs(calculatedTotal - this.total) > 0.01) {
+            throw new Error('Total amount calculation mismatch');
+        }
 
+        // Validate cash and balance
+        const calculatedBalance = this.cash - this.total;
+        if (Math.abs(calculatedBalance - this.balance) > 0.01) {
+            throw new Error('Balance calculation mismatch');
+        }
 
     }
 }
