@@ -124,6 +124,14 @@ const db = {
         return this.orderDetails.filter(od => od.orderId === orderId);
     },
 
+    generateOrderId() {
+        const maxId = this.orders.reduce((max, order) => {
+            const num = parseInt(order.orderId.substring(1));
+            return num > max ? num : max;
+        }, 0);
+        return `O${(maxId + 1).toString().padStart(3, '0')}`;
+    },
+
     generateId(prefix) {
         const list = prefix === 'C' ? this.customers :
             prefix === 'I' ? this.items : [];

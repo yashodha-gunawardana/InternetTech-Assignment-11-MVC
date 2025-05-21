@@ -1,4 +1,3 @@
-
 class CustomerModel {
     constructor(db) {
         this.db = db;

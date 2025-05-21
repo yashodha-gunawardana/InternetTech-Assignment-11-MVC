@@ -11,7 +11,7 @@ class ItemModel {
             name: data.name.trim(),
             quantity: parseInt(data.quantity) || 0,
             price: parseFloat(data.price) || 0.00,
-            //  category: data.category?.trim() || 'general'
+            category: data.category?.trim() || 'general'
         };
 
         // Ensure ID is unique if manually provided
@@ -74,15 +74,6 @@ class ItemModel {
         if (!data.name) {
             throw new Error('Item name is required');
         }
-
-        /* if (data.quantity === undefined || isNaN(parseInt(data.quantity))) {
-             throw new Error('Valid quantity is required');
-         }
-
-         if (data.price === undefined || isNaN(parseFloat(data.price))) {
-             throw new Error('Valid price is required');
-         }
-         */
 
         if (isNaN(data.quantity) || parseInt(data.quantity) < 0) {
             throw new Error("Quantity must be a non-negative number");
