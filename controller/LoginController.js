@@ -55,7 +55,13 @@ class LoginController {
         window.showPage?.('login-page');
     }
 
-
+    showAlert(message, type) {
+        if (window.Swal) {
+            Swal.fire(type.toUpperCase(), message, type);
+        } else {
+            alert(message); // fallback
+        }
+    }
 }
 
 export default LoginController;
