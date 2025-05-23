@@ -18,6 +18,29 @@ class LoginController {
         }
     }
 
+    handleLogin(e) {
+        e.preventDefault();
+
+        const username = this.loginForm.querySelector('input[type="text"]').value.trim();
+        const password = this.loginForm.querySelector('input[type="password"]').value.trim();
+
+        if (!username || !password) {
+            this.showAlert('⚠️ Please enter both username and password', 'warning');
+            return;
+        }
+
+        if (db.authenticate(username, password)) {
+            const displayName = db.currentUser.name || db.currentUser.username;
+
+            this.showAlert(`✅ Login successfully..! Welcome ${displayName}! 🎉`, 'success');
+
+            window.updateAuthUI?.();
+            window.showPage?.('home-page');
+        } else {
+            this.showAlert('❌ Invalid username or password', 'error');
+        }
+    }
+
 
 }
 
