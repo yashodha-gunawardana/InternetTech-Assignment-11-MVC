@@ -6,3 +6,15 @@ export let login_db = [
 ];
 
 export let currentUser = null;
+
+
+export const authenticate = (username, password) => {
+    const user = login_db.find(
+        u => u.username === username && u.password === password
+    );
+    if (user) {
+        currentUser = user;
+        return true;
+    }
+    return false;
+};
