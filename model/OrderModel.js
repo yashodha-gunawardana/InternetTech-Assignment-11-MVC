@@ -18,6 +18,12 @@ class Order {
         return this.orderQty * this.unitPrice;
     }
 
+    // Calculate subtotal after applying discount percentage
+    static calculateSubTotal(total, discountPercent) {
+        if (!discountPercent || discountPercent <= 0) return total;
+        return total - (total * (discountPercent / 100));
+    }
+
 
 }
 
