@@ -18,3 +18,8 @@ export const authenticate = (username, password) => {
     }
     return false;
 };
+
+
+export const logout = () => {
+    currentUser = null;
+};
