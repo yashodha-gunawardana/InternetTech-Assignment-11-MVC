@@ -24,6 +24,30 @@ class CustomerController {
         $('.btn-go-back').on('click', () => window.history.back());
     }
 
+    handleSave() {
+        let customerId = $("#customerId").val();
+        let customerName = $('#customerName').val();
+        let address = $('#address').val();
+        let number = $('#contactNumber').val();
+
+        if (customerId === '' || customerName === '' || address === '' || number === '') {
+            Swal.fire("Error!", "Invalid Inputs", "error");
+            return;
+        }
+
+        if (this.isDuplicated(customerId)) {
+            Swal.fire("Error!", "Duplicate ID!", "error");
+            return;
+        }
+
+        let customer_data = new CustomerModel(customerId, customerName, address, number);
+        customer_db.push(customer_data);
+        this.clearForm();
+        this.loadCustomerTableData();
+
+        Swal.fire("Success!", "Added Successfully", "success");
+    }
+
 
 }
 
