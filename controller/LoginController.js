@@ -8,6 +8,16 @@ class LoginController {
         this.initEventListeners();
     }
 
+    initEventListeners() {
+        if (this.loginForm) {
+            this.loginForm.addEventListener('submit', (e) => this.handleLogin(e));
+        }
+
+        if (this.logoutBtn) {
+            this.logoutBtn.addEventListener('click', () => this.handleLogout());
+        }
+    }
+
 
 }
 
