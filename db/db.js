@@ -5,3 +5,4 @@ export let login_db = [
     { username: "yashoda", password: "yashoda123"}
 ];
 
+export let currentUser = null;
