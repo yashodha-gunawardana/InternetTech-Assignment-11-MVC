@@ -48,6 +48,20 @@ class CustomerController {
         Swal.fire("Success!", "Added Successfully", "success");
     }
 
+    loadCustomerTableData() {
+        $('#cus-body').empty();
+        customer_db.forEach(item => {
+            $('#cus-body').append(`
+                <tr>
+                    <td>${item.customerId}</td>
+                    <td>${item.customerName}</td>
+                    <td>${item.address}</td>
+                    <td>${item.phoneNumber}</td>
+                </tr>
+            `);
+        });
+    }
+
 
 }
 
