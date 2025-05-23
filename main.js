@@ -1,4 +1,4 @@
-import db from './db/db.js';
+import * as db from './db/db.js';
 import LoginController from './controller/LoginController.js';
 import CustomerController from './controller/CustomerController.js';
 import ItemController from './controller/ItemController.js';
