@@ -62,6 +62,15 @@ class CustomerController {
         });
     }
 
+    handleRowClick(e) {
+        this.selectedIndex = $(e.currentTarget).index();
+        let obj = customer_db[this.selectedIndex];
+        $('#customerId').val(obj.customerId);
+        $('#customerName').val(obj.customerName);
+        $('#address').val(obj.address);
+        $('#contactNumber').val(obj.phoneNumber);
+    }
+
 
 }
 
