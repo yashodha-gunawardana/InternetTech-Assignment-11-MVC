@@ -196,7 +196,32 @@ class CustomerController {
         });
     }
 
+    handleSearch() {
+        const keyword = $('.search-bar').val().trim().toLowerCase();
+        $('#cus-body').empty();
 
+        const results = customer_db.filter(c =>
+            c.customerId.toLowerCase().includes(keyword) ||
+            c.customerName.toLowerCase().includes(keyword) ||
+            c.address.toLowerCase().includes(keyword) ||
+            c.phoneNumber.includes(keyword)
+        );
+
+        if (results.length === 0) {
+            $('#cus-body').append(`<tr><td colspan="4" class="text-danger text-center">No results found</td></tr>`);
+        } else {
+            results.forEach(c => {
+                $('#cus-body').append(`
+                    <tr>
+                        <td>${c.customerId}</td>
+                        <td>${c.customerName}</td>
+                        <td>${c.address}</td>
+                        <td>${c.phoneNumber}</td>
+                    </tr>
+                `);
+            });
+        }
+    }
 }
 
 export default CustomerController;
