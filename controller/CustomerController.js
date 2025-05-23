@@ -71,6 +71,11 @@ class CustomerController {
         $('#contactNumber').val(obj.phoneNumber);
     }
 
+    clearForm() {
+        $('#customerId, #customerName, #address, #contactNumber').val("");
+        this.selectedIndex = -1;
+    }
+
 
 }
 
