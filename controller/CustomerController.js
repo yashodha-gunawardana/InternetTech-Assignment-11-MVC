@@ -104,6 +104,32 @@ class CustomerController {
         });
     }
 
+    handleDelete() {
+        const customerId = $('#customerId').val();
+        const index = customer_db.findIndex(item => item.customerId === customerId);
+
+        if (index === -1) {
+            Swal.fire("Not Found", "No customer found with that ID", "error");
+            this.clearForm();
+            return;
+        }
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to delete this customer?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                customer_db.splice(index, 1);
+                this.loadCustomerTableData();
+                this.clearForm();
+                Swal.fire("Deleted!", "Customer deleted successfully.", "success");
+            }
+        });
+    }
+
 
 }
 
