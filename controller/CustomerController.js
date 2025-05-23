@@ -76,6 +76,34 @@ class CustomerController {
         this.selectedIndex = -1;
     }
 
+    handleUpdate() {
+        if (this.selectedIndex === -1) {
+            Swal.fire("Error", "Please select a customer to update", "error");
+            return;
+        }
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to update this customer?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, update it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const updatedCustomer = new CustomerModel(
+                    $("#customerId").val(),
+                    $('#customerName').val(),
+                    $('#address').val(),
+                    $('#contactNumber').val()
+                );
+                customer_db[this.selectedIndex] = updatedCustomer;
+                this.loadCustomerTableData();
+                this.clearForm();
+                Swal.fire("Updated!", "Customer updated successfully.", "success");
+            }
+        });
+    }
+
 
 }
 
