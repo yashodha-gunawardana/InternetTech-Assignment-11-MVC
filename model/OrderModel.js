@@ -13,6 +13,11 @@ class Order {
         this.unitPrice = unitPrice;           // Unit price of the item
     }
 
+    // Calculate total price for the order (orderQty * unitPrice)
+    getTotal() {
+        return this.orderQty * this.unitPrice;
+    }
+
 
 }
 
