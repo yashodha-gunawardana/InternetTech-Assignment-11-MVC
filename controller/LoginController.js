@@ -41,6 +41,20 @@ class LoginController {
         }
     }
 
+    handleLogout() {
+        db.logout();
+
+        this.showAlert('✅ Logged out successfully!', 'success');
+
+        if (this.loginForm) {
+            this.loginForm.querySelector('input[type="text"]').value = '';
+            this.loginForm.querySelector('input[type="password"]').value = '';
+        }
+
+        window.updateAuthUI?.();
+        window.showPage?.('login-page');
+    }
+
 
 }
 
