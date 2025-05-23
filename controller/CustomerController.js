@@ -134,6 +134,68 @@ class CustomerController {
         return customer_db.some(customer => customer.customerId === id);
     }
 
+    setupValidation() {
+        let checkId = false, checkName = false, checkAddress = false, checkNumber = false;
+
+        const checkEmptyInputFields = () => {
+            $('#customer-save').prop('disabled', !(checkId && checkName && checkAddress && checkNumber));
+        };
+
+        $('#customerId').on('input', () => {
+            const id = $('#customerId').val();
+            if (this.isDuplicated(id)) {
+                $('#customerId').next('.error-message').text('Duplicate ID').show();
+                $('#customerId').css('border', '1px solid red');
+                checkId = false;
+            } else if (/^C\d{3,}$/.test(id)) {
+                $('#customerId').css('border', '1px solid green');
+                $('#customerId').next('.error-message').hide();
+                checkId = true;
+            } else {
+                $('#customerId').next('.error-message').text('Invalid ID Format. (Ex: C001)').show();
+                $('#customerId').css('border', '1px solid red');
+                checkId = false;
+            }
+            checkEmptyInputFields();
+        });
+
+        $('#customerName').on('input', () => {
+            const name = $('#customerName').val();
+            if (name.length >= 3) {
+                $('#customerName').css('border', '1px solid green');
+                checkName = true;
+            } else {
+                $('#customerName').css('border', '1px solid red');
+                checkName = false;
+            }
+            checkEmptyInputFields();
+        });
+
+        $('#address').on('input', () => {
+            const address = $('#address').val();
+            if (address.length >= 5) {
+                $('#address').css('border', '1px solid green');
+                checkAddress = true;
+            } else {
+                $('#address').css('border', '1px solid red');
+                checkAddress = false;
+            }
+            checkEmptyInputFields();
+        });
+
+        $('#contactNumber').on('input', () => {
+            const number = $('#contactNumber').val();
+            if (/^\d{10}$/.test(number)) {
+                $('#contactNumber').css('border', '1px solid green');
+                checkNumber = true;
+            } else {
+                $('#contactNumber').css('border', '1px solid red');
+                checkNumber = false;
+            }
+            checkEmptyInputFields();
+        });
+    }
+
 
 }
 
