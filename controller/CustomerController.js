@@ -130,6 +130,10 @@ class CustomerController {
         });
     }
 
+    isDuplicated(id) {
+        return customer_db.some(customer => customer.customerId === id);
+    }
+
 
 }
 
