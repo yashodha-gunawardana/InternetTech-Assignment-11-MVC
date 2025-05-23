@@ -24,6 +24,11 @@ class Order {
         return total - (total * (discountPercent / 100));
     }
 
+    // Calculate balance after cash payment
+    static calculateBalance(subTotal, cashPaid) {
+        return cashPaid - subTotal;
+    }
+
 
 }
 
