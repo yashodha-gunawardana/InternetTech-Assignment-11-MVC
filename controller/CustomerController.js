@@ -7,6 +7,12 @@ class CustomerController {
         this.initialize();
     }
 
+    initialize() {
+        this.bindEvents();
+        this.loadCustomerTableData();
+        this.setupValidation();
+    }
+
 
 }
 
