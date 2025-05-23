@@ -29,6 +29,16 @@ class Order {
         return cashPaid - subTotal;
     }
 
+    static generateOrderId() {
+        if (!order_db.length) return 'O001'; // First order
+
+        const maxId = order_db.reduce((max, order) => {
+            const num = parseInt(order.orderId.substring(1));
+            return num > max ? num : max;
+        }, 0);
+
+        return `O${(maxId + 1).toString().padStart(3, '0')}`;
+    }
 
 }
 
